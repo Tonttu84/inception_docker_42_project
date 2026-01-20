@@ -16,13 +16,7 @@ make fclean  # full cleanup (containers + data + .env)
 Inception Dockerized WordPress + MariaDB + Nginx
 This repository contains a Dockerized WordPress environment with MariaDB and Nginx. It is designed to run without root privileges on the host and supports persistent data storage in the data/ folder.
 
-Quick Start
-Build and start the stack:
-``` bash
-make
-
-```
-This will:
+Building and startinh the stack will:
 
 Create a default unsafe .env file at ./srcs/.env (if missing)
 
