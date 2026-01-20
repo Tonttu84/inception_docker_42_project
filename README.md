@@ -35,11 +35,11 @@ Expose WordPress at: https://localhost:8443
 # Default Credentials
 The default passwords are unsafe if you did not provide an .env file:
 ```
-User	Password	Role
-siteboss	unsafe	WordPress admin
-writer	    unsafe	WordPress author
-MariaBoss	unsafe	MariaDB admin
-myMariaDB	unsafe	MariaDB database
+User	    Password	Role
+siteboss	unsafe      WordPress admin
+writer	    unsafe	    WordPress author
+MariaBoss	unsafe	    MariaDB admin
+myMariaDB	unsafe	    MariaDB database
 ```
 
 Note: These passwords come from the default .env file if it doesn’t exist. You can safely modify .env before the first make run to use your own credentials.
