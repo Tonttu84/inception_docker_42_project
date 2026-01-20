@@ -37,7 +37,7 @@ The default passwords are unsafe if you did not provide an .env file:
 ```
 User	Password	Role
 siteboss	unsafe	WordPress admin
-writer	unsafe	WordPress author
+writer	    unsafe	WordPress author
 MariaBoss	unsafe	MariaDB admin
 myMariaDB	unsafe	MariaDB database
 ```
