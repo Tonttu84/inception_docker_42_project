@@ -11,7 +11,7 @@ The hardest part for me personally was debugging the interactions with wordpress
 bash
 make       # build and start the stack
 ```
-# open https://localhost:8443 in your browser
+open https://localhost:8443 in your browser
 make fclean  # full cleanup (containers + data + .env)
 Inception Dockerized WordPress + MariaDB + Nginx
 This repository contains a Dockerized WordPress environment with MariaDB and Nginx. It is designed to run without root privileges on the host and supports persistent data storage in the data/ folder.
@@ -32,7 +32,7 @@ Build and run Docker containers for WordPress, MariaDB, and Nginx
 
 Expose WordPress at: https://localhost:8443
 
-Default Credentials
+# Default Credentials
 The default passwords are unsafe if you did not provide an .env file:
 
 User	Password	Role
@@ -54,7 +54,7 @@ Persistent Data: All MariaDB and WordPress data is stored in the data/ folder. R
 
 WordPress HTTPS: WordPress is forced to HTTPS internally using port 8443 ($_SERVER['HTTPS'] = 'on') for compatibility with the Dockerized Nginx setup.
 
-Makefile Targets
+# Makefile Targets
 Target	Description
 make or make all	Build and run the stack
 make run	Start containers only
