@@ -1,0 +1,77 @@
+services:
+  mariadb_service: 
+    build:  
+      dockerfile: Dockerfile
+      context: ./requirements/mariadb
+    ports:
+      - "3306:3306"    
+    image: mariadb_image
+    container_name: mariadb_container
+    healthcheck:
+      test: ["CMD-SHELL", "mariadb -u root -e 'SELECT 1;' || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    env_file:
+      - .env
+    restart: unless-stopped
+    networks:
+      - docker-network
+    volumes:
+      - mariadb_volume:/var/lib/mysql
+  wordpress_service: 
+    build: ./requirements/wordpress
+    restart: unless-stopped
+    image: wordpress_image 
+    container_name: wordpress_container
+    depends_on:
+      mariadb_service:
+        condition: service_healthy
+    networks:
+      - docker-network
+    volumes:
+      - wordpress_volume:/var/www/html
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD-SHELL", "[ -f /var/www/html/wp-content/themes/twentytwentyfive/style.css ] || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  nginx_service: 
+    build: ./requirements/nginx
+    restart: unless-stopped
+    image: nginx_image 
+    container_name: nginx_container
+    depends_on:
+      wordpress_service:
+        condition: service_healthy
+    ports:
+      - "8443:8443"
+    networks:
+      - docker-network
+    env_file:
+      - .env
+    volumes:
+      - wordpress_volume:/var/www/html
+
+
+volumes:
+  mariadb_volume:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ../data/mariadb
+
+  wordpress_volume:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ../data/wordpress
+
+networks:
+  docker-network:
+
