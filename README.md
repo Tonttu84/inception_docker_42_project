@@ -7,8 +7,10 @@ The hardest part for me personally was debugging the interactions with wordpress
 
 # TL;DR Quickstart
 
-
+``` 
+bash
 make       # build and start the stack
+```
 # open https://localhost:8443 in your browser
 make fclean  # full cleanup (containers + data + .env)
 Inception Dockerized WordPress + MariaDB + Nginx
@@ -64,15 +66,20 @@ Recommended Usage
 First-time setup:
 
 
-make
+``` 
+bash 
+make 
+```
 Access WordPress:
 
 https://localhost:8443
 Rebuild or reset the environment:
 
 
+```
 make fclean   # full cleanup
 make          # rebuild
+```
 TL;DR
 Run make → build and start stack
 
